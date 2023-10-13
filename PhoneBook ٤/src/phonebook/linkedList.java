@@ -137,7 +137,7 @@ public class linkedList<T> {
         }
         return result;
     }
-        
+      System.out.println("test gihub") ;
         
     }
 
