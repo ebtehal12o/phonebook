@@ -23,7 +23,7 @@ public class main {
        p.addContact(c4); 
        
        
-p.printContacts(l);
+p.prints(l);
 
 
 
