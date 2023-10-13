@@ -112,29 +112,20 @@ public class PhoneBook {
     
    
     
-      public void printContacts(linkedList<Contact> linkedList )  {
-          if(linkedList.isEmpty())
-              System.out.println("Empty list !") ;
-          else
-          {
+    
+      public void printContacts( )  {
         int i = 1;
-            linkedList.findFirst();
-            while( !linkedList.last() )
+            contacts.findFirst();
+            while( !contacts.last())
             {
                 {
-                System.out.println("element = " + i++ +  linkedList.retrieve()) ; 
-                        linkedList.findNext(); 
-                }      
+ 
+                System.out.println("element = " + i++ +  contacts.retrieve()) ; 
+                        contacts.findNext(); 
+                }
             }
-          System.out.println(linkedList.retrieve() ) ;
             
             
     }
-
-      }
-    
-    
-    
-   
    
 }
