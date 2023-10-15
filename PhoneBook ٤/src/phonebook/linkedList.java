@@ -76,7 +76,7 @@ public class linkedList<T> {
                 current = head ;
         }
     } 
-        public void insert(T d)
+        public void insert(T d) 
         {
         Node<T> p = new Node<T>(d) ;
         if (head == null)
@@ -103,12 +103,14 @@ public class linkedList<T> {
         {
             head = p ;  
             current = p ;
+            return ;
         }   
-        else
+        else {
         if(((Contact)d).compareTo(((Contact)head.data).getName()) < 0)  //if the new node is smaller than first one add it in the first
         {
         p.next = head ;
         head = p ;     
+        return ;
         }
         else
         {
@@ -121,6 +123,38 @@ public class linkedList<T> {
             }
             r.next = p ;
             p.next= c ;        
+        }
+        }
+    }
+    
+       public void addSortedevent(T e) //this method recive node then compare it's title with elements of the linked list then will add it based on its title
+    {
+        Node<T> p = new Node<T> (e) ;
+        if(head == null) //if the linked list is empty insert it at the first
+        {
+            head = p ;  
+            current = p ;
+            return ;
+        }   
+        else {
+        if(((Event)e).compareTo(((Event)head.data).getEventTitle()) < 0)  //if the new node is smaller than first one add it in the first
+        {
+        p.next = head ;
+        head = p ;     
+        return ;
+        }
+        else
+        {
+            Node<T> c = head ;
+            Node<T> r = null ;
+            while(c!= null &&(((Event)c.data).compareTo(((Event)e).getEventTitle()) <= 0) ) //search for its position and add it in the middle or last
+            {
+                r = c ; 
+                c = c.next ;
+            }
+            r.next = p ;
+            p.next= c ;        
+        }
         }
     }
     
@@ -136,8 +170,7 @@ public class linkedList<T> {
             current = current.next;
         }
         return result;
-    }
-      System.out.println("test gihub") ;
+    }  
         
     }
 
