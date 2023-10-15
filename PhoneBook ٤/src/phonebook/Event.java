@@ -51,10 +51,15 @@ public class Event {
         this.location = location;
     }
 
+   public int compareTo (String e ){
+return eventTitle.compareTo(e);
+}
     @Override
     public String toString() {
         return "Event{" + "eventTitle=" + eventTitle + ", date=" + date + ", time=" + time + ", location=" + location + ", contactName=" + contactName + '}';
     }
+
+  
     
     
     
