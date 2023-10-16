@@ -32,13 +32,11 @@ public class PhoneBook {
       if (exist == true)
           contacts.addSorted(c); //will add if not found
       
-      if(!(contacts.retrieve().getName().equals(c.getName()) || contacts.retrieve().getPhone().equals(c.getPhone())) ) //will check the last element
-          contacts.addSorted(c); 
+    if(!(contacts.retrieve().getName().equals(c.getName()) || !contacts.retrieve().getPhone().equals(c.getPhone())) ) //will check the last element    
+         contacts.addSorted(c); 
     }
-    
     }
-    
-    public void deleteContact(String name)
+   public void deleteContact(String name)
     {
         if(contacts.isEmpty())
             return ;
@@ -58,7 +56,7 @@ public class PhoneBook {
          if(contacts.retrieve().getName().equals(name))
             {
                 contacts.remove();
-            System.out.println("Delet successfully !");
+            System.out.println("Delet successfully!");
             return ;   
         }
          else
@@ -66,6 +64,7 @@ public class PhoneBook {
         }
         
     }
+    
     public linkedList<Contact> searchContacts(String n)
     {
         // this will be a linked list that will return contacts that have same emailAddress or email or birthday
@@ -165,7 +164,7 @@ public linkedList<Contact> getContactsEvent(String n)
 {
  if(events.isEmpty())
      return null ;
-
+ 
  events.findFirst();
  while(events.last()) //check all elemnts except last one 
  {
@@ -186,7 +185,7 @@ public linkedList<Contact> getContactsEvent(String n)
             while( !contacts.last())
             {
                 {
-                System.out.println("element = " + i++ +  contacts.retrieve()) ; 
+                System.out.println("element = " + i++ +  contacts.retrieve().getName()) ; 
                         contacts.findNext(); 
                 }
             }           
