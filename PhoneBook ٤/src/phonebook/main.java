@@ -101,7 +101,44 @@ public class main {
                nam = input.nextLine(); 
                p.deleteContact(nam);
                
-               break;               
+               break;  
+
+               case 5:{
+               System.out.println("Enter search criteria: 1.contactname 2.Event tittle: ");
+               int ser = input.nextInt();
+               
+               switch(ser){
+                   
+                   case 1 :
+                    
+                       p.PrintContactsShareFirstName();
+                       break;
+                       
+                   case 2 :
+               
+                    p.PrintContactsShareEvent();
+                    break;
+                  
+                   
+                   
+               }
+           }
+           
+           case 6:
+           p.PrintContactsShareFirstName();
+           
+           break;
+           
+               
+
+
+
+
+
+
+
+
+               
                
            
            
