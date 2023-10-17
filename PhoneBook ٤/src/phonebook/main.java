@@ -94,7 +94,14 @@ public class main {
             
         } 
                break;
+
+
+               case 3:
+               System.out.println("Enter the contact you want to delete: ");
+               nam = input.nextLine(); 
+               p.deleteContact(nam);
                
+               break;               
                
            
            
