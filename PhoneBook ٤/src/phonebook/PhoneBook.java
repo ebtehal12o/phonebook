@@ -30,12 +30,13 @@ public class PhoneBook {
           contacts.findNext();     //if not found go to the next element
       }
       if (exist == true)
-          contacts.addSorted(c); //will add if not found
+          contacts.addSortedContact(c); //will add if not found
       
     if(!(contacts.retrieve().getName().equals(c.getName()) || !contacts.retrieve().getPhone().equals(c.getPhone())) ) //will check the last element    
-         contacts.addSorted(c); 
+         contacts.addSortedContact(c); 
     }
     }
+    
    public void deleteContact(String name)
     {
         if(contacts.isEmpty())
@@ -136,7 +137,7 @@ public class PhoneBook {
         else
         {
             if(!searchEvent(e.getEventTitle())) //if not exist
-              events.addSorted(e) ; // add sorted
+              events.addSortedevent(e) ; // add sorted
         } 
     }           
     
@@ -154,7 +155,7 @@ public linkedList<Contact> getContactsEvent(String n)
 {
     Event e = searchEventTitle(n) ;
     if(e != null)
-        return e.contactsEvent ;
+        return e.contactsWithEvent ;
     return null ;
     
 }
@@ -178,10 +179,10 @@ public linkedList<Contact> getContactsEvent(String n)
  
  return null ;
 }
- 
-public boolean isConflict(Event e , Contact c){
+ //this method will check if the event is conflict with other event in contact or not if not conflict will return 
+ public boolean isConflict(Event e , String n){ 
      
-     linkedList <Event> eventsinContact = getEventsContact(c.getName()) ;
+     linkedList <Event> eventsinContact = getEventsContact(n) ;
      
      if(eventsinContact.isEmpty()) { 
          return false ;
@@ -189,7 +190,7 @@ public boolean isConflict(Event e , Contact c){
      boolean exsist = false ;
          eventsinContact.findFirst();
          while(!eventsinContact.last()) {
-             if(e.getDate().equalsIgnoreCase(eventsinContact.retrieve().getDate()) && e.getTime().equals(eventsinContact.retrieve().getTime()))   
+             if(e.getDate().equals(eventsinContact.retrieve().getDate()) && e.getTime().equals(eventsinContact.retrieve().getTime()))   
                  exsist = true ;
          eventsinContact.findNext();
              }
@@ -199,10 +200,38 @@ public boolean isConflict(Event e , Contact c){
             
      
  }
+ public  void scheduleEvent(Event e , String contactName)
+ {
+     Contact c = searchContact(contactName) ;
+     if(c == null) {
+       System.out.println("can not schedule this event because the contact not exsist ")  ;
+     return ;
+     }
      
+     boolean isConflect = isConflict(e, c.getName()) ;
+     if(c != null && !isConflect )
+     {
+         c.contact_events.addSortedevent(e);
+         e.contactsWithEvent.addSortedContact(c);
+        addEvent(e) ;
+         System.out.println("Event schedled successfully !") ;
+     }
+     else
+     {
+         if(c == null)
+          System.out.println("contact in this event does not exsist .")  ;
+         if(isConflect )
+             System.out.println("There is conflict event ") ;
+     
+         
+                  }
+     
+ }
+ 
    public void PrintContactsShareFirstName(){
        
         System.out.print("Enter the first name:");
+        Scanner input = new Scanner (System.in) ;
         String fname = input.nextLine();
         
         if (contacts.isEmpty())
@@ -224,14 +253,12 @@ public boolean isConflict(Event e , Contact c){
 
             if (names[0].compareToIgnoreCase(fname) == 0)
                 System.out.println(contacts.retrieve() + "\n");
-       
-        
     }
     
      public void PrintContactsShareEvent(){
         
-        
         System.out.print("Enter the Event:");
+        Scanner input = new Scanner(System.in) ;
         String ev = input.nextLine();
         
         if (contacts.isEmpty())
@@ -252,14 +279,38 @@ public boolean isConflict(Event e , Contact c){
                 System.out.println(contacts.retrieve() + "\n");
         
     }
-  
-    
-    
-   
-   
+        
+//this will print the linked list for all events 
+    public void printAllEvents() {
+
+    if(events.isEmpty()) {
+        System.out.println("Empty list") ;  
+    return ;
+    }
+    else 
+    {
+        events.findFirst();
+        while(!events.last()) //print all events except last one
+        {
+            System.out.println("event title : " + events.retrieve().getEventTitle() )  ;
+   System.out.println("event date  : " + events.retrieve().getDate()) ;
+   System.out.println("event time  : " + events.retrieve().getTime()) ;
+   System.out.println("event location : " + events.retrieve().getLocation()) ;
+   System.out.println("event contact name : " + events.retrieve().getContactName()) ;
+   events.findNext();
+        }
+        //print last event
+                  System.out.println("event title : " + events.retrieve().getEventTitle() )  ;
+   System.out.println("event date  : " + events.retrieve().getDate()) ;
+   System.out.println("event time  : " + events.retrieve().getTime()) ;
+   System.out.println("event location : " + events.retrieve().getLocation()) ;
+   System.out.println("event contact name : " + events.retrieve().getContactName()) ;
+    }
+            
 }
-    
-    
+              
+}
+ 
    
    
 
