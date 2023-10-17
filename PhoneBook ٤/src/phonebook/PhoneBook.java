@@ -179,33 +179,27 @@ public linkedList<Contact> getContactsEvent(String n)
  return null ;
 }
  
- public boolean isConflict(Event e , Contact c){
+public boolean isConflict(Event e , Contact c){
      
-     linkedList <Event> eventContact = getEventsContact(c.getName()) ;
+     linkedList <Event> eventsinContact = getEventsContact(c.getName()) ;
      
-     if(eventContact.isEmpty()) {
-         eventContact.addSorted(e); 
+     if(eventsinContact.isEmpty()) { 
          return false ;
-     }
-         eventContact.findFirst();
-         while(!eventContact.last()) {
-             if(!e.getDate().equalsIgnoreCase(eventContact.retrieve().getDate()) && !e.getTime().equals(eventContact.retrieve().getTime())) 
-             {
-                 eventContact.addSorted(e);
-                 return false ;
+     } 
+     boolean exsist = false ;
+         eventsinContact.findFirst();
+         while(!eventsinContact.last()) {
+             if(e.getDate().equalsIgnoreCase(eventsinContact.retrieve().getDate()) && e.getTime().equals(eventsinContact.retrieve().getTime()))   
+                 exsist = true ;
+         eventsinContact.findNext();
              }
-         eventContact.findNext();
-             }
-         if(!e.getDate().equalsIgnoreCase(eventContact.retrieve().getDate()) && !e.getTime().equals(eventContact.retrieve().getTime()))
-         {
-             eventContact.addSortedevent(e);
-             return false ;
-         }
-     else
-             return true ;
+         if(e.getDate().equalsIgnoreCase(eventsinContact.retrieve().getDate()) && e.getTime().equals(eventsinContact.retrieve().getTime()))  
+             exsist = true;
+     return exsist ;
+            
      
- 
  }
+     
    public void PrintContactsShareFirstName(){
        
         System.out.print("Enter the first name:");
