@@ -74,21 +74,22 @@ public class main {
             case 1 :
                 System.out.println("Enter the contact's name: ");
                 nam = input.nextLine(); 
-                p.searchContact(nam) ;
+                p.searchContact(nam).toString() ;
+                
                 
                 break;
                 
             case 2 :
                 System.out.println("Enter the contact's Phone Number: ");
                 num = input.nextLine(); 
-                p.searchContact(num) ;
+                p.searchContact(num).toString() ;
                 
                 break;
                 
             case 3 , 4 , 5:
              System.out.println("Enter the contact's Email address or address or Birthday : "); 
              mm = input.nextLine();
-             p.searchContacts(mm);
+            p.printContacts(p.searchContacts(mm)); 
              
              break;
             
@@ -100,6 +101,7 @@ public class main {
                System.out.println("Enter the contact you want to delete: ");
                nam = input.nextLine(); 
                p.deleteContact(nam);
+               break ;
                
                case 4:
                    System.out.println("Enter event title : ") ;
@@ -113,8 +115,7 @@ public class main {
                    String loc = input.nextLine() ;
                    
                    Event e = new Event (t , d ,time , loc , n) ;
-                   p.scheduleEvent( e , n) ;
-                   
+                   p.scheduleEvent( e , n) ; 
                break;  
 
                case 5:{
@@ -133,6 +134,7 @@ public class main {
                     p.PrintContactsShareEvent();
                     break;             
                }
+               break ;
            }
            
            case 6:
@@ -140,7 +142,8 @@ public class main {
            break;
            
            case 7 :
-               p.printAllEvents();              
+               p.printAllEvents();    
+               break ;
                
        }
        }while (ch != 8) ; 
