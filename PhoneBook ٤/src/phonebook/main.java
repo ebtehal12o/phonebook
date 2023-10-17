@@ -58,6 +58,42 @@ public class main {
                  
            case 2 :
                
+                System.out.println("Enter search criteria:");
+        System.out.println("1. Name");
+        System.out.println("2. Phone Number");
+        System.out.println("3. Email Address");
+        System.out.println("4. Address");
+        System.out.println("5. Birthday");
+        System.out.println("\nEnter your choice: ");
+        int choice = input.nextInt();
+        
+        switch(choice){
+            
+            
+            
+            case 1 :
+                System.out.println("Enter the contact's name: ");
+                nam = input.nextLine(); 
+                p.searchContact(nam) ;
+                
+                break;
+                
+            case 2 :
+                System.out.println("Enter the contact's Phone Number: ");
+                num = input.nextLine(); 
+                p.searchContact(num) ;
+                
+                break;
+                
+            case 3 , 4 , 5:
+             System.out.println("Enter the contact's Email address or address or Birthday : "); 
+             mm = input.nextLine();
+             p.searchContacts(mm);
+             
+             break;
+          
+            
+        }               
                
                
            
