@@ -29,7 +29,7 @@ public class main {
 
        Scanner input = new Scanner (System.in) ;
        ch = input.nextInt() ;
-       String nam , num, note, em, adr, bir = input.nextLine();
+       String nam , num, note, em, adr, bir , mm= input.nextLine();
          
        switch(ch)
        {
@@ -101,6 +101,20 @@ public class main {
                nam = input.nextLine(); 
                p.deleteContact(nam);
                
+               case 4:
+                   System.out.println("Enter event title : ") ;
+                   String t = input.nextLine() ;
+                   System.out.println("Enter contact name : ") ;
+                   String n = input.nextLine() ;
+                   System.out.println("Enter event date and time (MM/DD/yyyy HH:MM) : ") ;
+                   String d = input.nextLine() ;
+                   String time = input.nextLine() ;
+                   System.out.println("Enter event location : ") ;
+                   String loc = input.nextLine() ;
+                   
+                   Event e = new Event (t , d ,time , loc , n) ;
+                   p.scheduleEvent( e , n) ;
+                   
                break;  
 
                case 5:{
@@ -117,35 +131,16 @@ public class main {
                    case 2 :
                
                     p.PrintContactsShareEvent();
-                    break;
-                  
-                   
-                   
+                    break;             
                }
            }
            
            case 6:
            p.PrintContactsShareFirstName();
-           
            break;
            
-               
-
-
-
-
-
-
-
-
-               
-               
-           
-           
-                 
-                 
-               
-               
+           case 7 :
+               p.printAllEvents();              
                
        }
        }while (ch != 8) ; 
@@ -153,5 +148,3 @@ public class main {
     } 
     
 }
-   
-        
