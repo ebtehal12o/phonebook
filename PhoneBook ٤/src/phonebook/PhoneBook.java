@@ -168,12 +168,12 @@ public linkedList<Contact> getContactsEvent(String n)
  events.findFirst();
  while(events.last()) //check all elemnts except last one 
  {
-     if(events.retrieve().getEventTitle().equals(contacts))
+     if(events.retrieve().getEventTitle().equals(t))
          return events.retrieve() ;
      else
      events.findNext();
  }
- if(events.retrieve().getEventTitle().equals(contacts)) //check last elemnt
+ if(events.retrieve().getEventTitle().equals(t)) //check last elemnt
      return events.retrieve() ;
  
  return null ;
@@ -258,17 +258,7 @@ public linkedList<Contact> getContactsEvent(String n)
                 System.out.println(contacts.retrieve() + "\n");
         
     }
-    public void printContacts()  {
-        int i = 1;
-            contacts.findFirst();
-            while( !contacts.last())
-            {
-                {
-                System.out.println("element = " + i++ +  contacts.retrieve().getName()) ; 
-                        contacts.findNext(); 
-                }
-            }           
-    }
+  
     
     
    
@@ -278,4 +268,4 @@ public linkedList<Contact> getContactsEvent(String n)
     
    
    
-}
+
