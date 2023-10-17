@@ -1,6 +1,6 @@
 package phonebook;
 
-
+import java.util.*  ;
 public class PhoneBook {
     
    linkedList<Contact> contacts ;
@@ -132,7 +132,7 @@ public class PhoneBook {
     public void addEvent(Event e)
     {
         if(events.isEmpty())
-            return  ;
+            events.addSortedevent(e);
         else
         {
             if(!searchEvent(e.getEventTitle())) //if not exist
@@ -178,7 +178,86 @@ public linkedList<Contact> getContactsEvent(String n)
  
  return null ;
 }
-   
+ 
+ public boolean isConflict(Event e , Contact c){
+     
+     linkedList <Event> eventContact = getEventsContact(c.getName()) ;
+     
+     if(eventContact.isEmpty()) {
+         eventContact.addSorted(e); 
+         return false ;
+     }
+         eventContact.findFirst();
+         while(!eventContact.last()) {
+             if(!e.getDate().equalsIgnoreCase(eventContact.retrieve().getDate()) && !e.getTime().equals(eventContact.retrieve().getTime())) 
+             {
+                 eventContact.addSorted(e);
+                 return false ;
+             }
+         eventContact.findNext();
+             }
+         if(!e.getDate().equalsIgnoreCase(eventContact.retrieve().getDate()) && !e.getTime().equals(eventContact.retrieve().getTime()))
+         {
+             eventContact.addSortedevent(e);
+             return false ;
+         }
+     else
+             return true ;
+     
+ 
+ }
+   public void PrintContactsShareFirstName(){
+       
+        System.out.print("Enter the first name:");
+        String fname = input.nextLine();
+        
+        if (contacts.isEmpty())
+            System.out.println("No Contacts found !");
+        
+        contacts.findFirst();
+        while(!contacts.last()) //check all elements in the linked list except last one
+        {
+            String name = contacts.retrieve().getName();
+            String [] names = name.split(" ");
+
+            if (names[0].compareToIgnoreCase(fname) == 0)
+                System.out.println(contacts.retrieve() + "\n");
+            contacts.findNext();
+        }
+        
+        String name = contacts.retrieve().getName();//for the last element
+            String [] names = name.split(" ");
+
+            if (names[0].compareToIgnoreCase(fname) == 0)
+                System.out.println(contacts.retrieve() + "\n");
+       
+        
+    }
+    
+     public void PrintContactsShareEvent(){
+        
+        
+        System.out.print("Enter the Event:");
+        String ev = input.nextLine();
+        
+        if (contacts.isEmpty())
+            System.out.println("No Events found !");
+        
+        contacts.findFirst();
+        while(!contacts.last()) //check all elements in the linked list except last one
+        {
+            String ee = events.retrieve().getEventTitle();
+            
+            if(ee.equals(ev)) 
+                System.out.println(contacts.retrieve() + "\n");
+            contacts.findNext();
+        }
+        
+        String ee = events.retrieve().getEventTitle();//for the last element
+        if(ee.equals(ev)) 
+                System.out.println(contacts.retrieve() + "\n");
+        
+    }
     public void printContacts()  {
         int i = 1;
             contacts.findFirst();
@@ -190,6 +269,11 @@ public linkedList<Contact> getContactsEvent(String n)
                 }
             }           
     }
+    
+    
+   
+   
+}
     
     
    
