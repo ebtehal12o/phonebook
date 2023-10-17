@@ -1,34 +1,17 @@
-
 package phonebook;
 
 import java.util.* ;
 
 public class main {
-
+    Scanner input = new Scanner (System.in) ;
     
     public static void main(String[] args) {
         
         linkedList<Contact> l = new linkedList() ;
        PhoneBook p = new PhoneBook() ;
-       
-       Contact c1 = new Contact ("G", "111111", "hhhhh", "ssss", "aaaa", "pppp" ) ;
-       Contact c2 = new Contact ("B", "888", "lll", "ssss", "122", "hhhh" ) ;
-       Contact c3 = new Contact ("Z", "555", "oooo", "s", "1ppp", "rrr" ) ;
-       Contact c4 = new Contact ("D", "0000", "oooo", "s", "1ppp", "rrr" ) ;
-        Contact c5= new Contact ("A", "00009", "oooo", "s", "1ppp", "rrr" ) ;
-       
-       p.addContact(c1);
-       p.addContact(c2);
-       p.addContact(c3);
-       p.addContact(c5);
-       p.addContact(c4); 
-       
-       
-   
-       
-       
+  
        int ch = 0 ;
-    String nam , num, note, em, adr, bir = input.nextLine();
+
         
         do {
           System.out.println("Welcome to the Linked Tree Phonebook !");
@@ -46,6 +29,7 @@ public class main {
 
        Scanner input = new Scanner (System.in) ;
        ch = input.nextInt() ;
+       String nam , num, note, em, adr, bir = input.nextLine();
          
        switch(ch)
        {
@@ -55,9 +39,31 @@ public class main {
                System.out.println("Enter the contact's phone number: ");
                num = input.nextLine() ;
                System.out.println("Enter the contact's email address: ");
-               note = input.nextLine() ;
+               em = input.nextLine() ;
                System.out.println("Enter the contact's address: ");
-               adr = inpt.nextLine();
+               adr = input.nextLine();
+                 System.out.println("Enter the contact's birthday: ");
+                 bir = input.nextLine();
+                 System.out.println("Enter any notes for the contact: ");
+                 note  = input.nextLine();
+                 
+                 Contact c = new Contact ( nam , num , em , adr ,bir , note);
+                 p.addContact(c);
+                 
+                 System.out.println("Contact added successfully!");
+                 
+                 break;
+                 
+                 
+                 
+           case 2 :
+               
+               
+               
+           
+           
+                 
+                 
                
                
                
@@ -67,3 +73,5 @@ public class main {
     } 
     
 }
+   
+        
