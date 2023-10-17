@@ -2,6 +2,7 @@
 package phonebook;
 
 import java.util.* ;
+
 public class main {
 
     
@@ -14,7 +15,7 @@ public class main {
        Contact c2 = new Contact ("B", "888", "lll", "ssss", "122", "hhhh" ) ;
        Contact c3 = new Contact ("Z", "555", "oooo", "s", "1ppp", "rrr" ) ;
        Contact c4 = new Contact ("D", "0000", "oooo", "s", "1ppp", "rrr" ) ;
-  Contact c5= new Contact ("A", "00009", "oooo", "s", "1ppp", "rrr" ) ;
+        Contact c5= new Contact ("A", "00009", "oooo", "s", "1ppp", "rrr" ) ;
        
        p.addContact(c1);
        p.addContact(c2);
@@ -40,12 +41,24 @@ p.prints(l);
        System.out.println("1.Add a contact");
        System.out.println("2.Search for a contact ");
        System.out.println("3.Delete a contact");
-       
+        System.out.println("4. Schedule an event");
+        System.out.println("5. Print event details");
+        System.out.println("6. Print contacts by first name");
+        System.out.println("7. Print all events alphabetically");
+        System.out.println("8. Exit");
+        System.out.println("\nEnter your choice: ");
+
+
        Scanner input = new Scanner (System.in) ;
        ch = input.nextInt() ;
+         
        switch(ch)
        {
            case 1 :
+
+
+
+               
                
        }
        }while (ch != 8) ; 
