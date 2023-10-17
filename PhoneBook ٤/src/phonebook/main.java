@@ -24,18 +24,13 @@ public class main {
        p.addContact(c4); 
        
        
-p.prints(l);
-
-
-
-        
-      
-        
-        
+   
        
        
        int ch = 0 ;
-       do {
+    String nam , num, note, em, adr, bir = input.nextLine();
+        
+        do {
           System.out.println("Welcome to the Linked Tree Phonebook !");
        System.out.println("Please choose an option :");
        System.out.println("1.Add a contact");
@@ -55,9 +50,15 @@ p.prints(l);
        switch(ch)
        {
            case 1 :
-
-
-
+               System.out.println("Enter the contact's name: ");
+               nam = input.nextLine(); 
+               System.out.println("Enter the contact's phone number: ");
+               num = input.nextLine() ;
+               System.out.println("Enter the contact's email address: ");
+               note = input.nextLine() ;
+               System.out.println("Enter the contact's address: ");
+               adr = inpt.nextLine();
+               
                
                
        }
